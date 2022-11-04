@@ -3,4 +3,4 @@ class Bank:
         self.x = x
 
     def print_bank(self):
-        print('hello, bank')
+        print('hello, Bank')
