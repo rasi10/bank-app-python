@@ -1,6 +1,7 @@
 class Bank:
-    def __init__(self, x):
-        self.x = x
+    def __init__(self, name):        
+        self.name = name
 
-    def print_bank(self):
-        print('hello, Bank')
+    def _load(self, input_file):
+        f = open(input_file,'r')
+        print(f.read())

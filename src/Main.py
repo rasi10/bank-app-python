@@ -3,14 +3,13 @@ from classes.Bank import Bank
 from classes.Customer import Customer
 
 
-def main():
-    a1 = Account(12)
-    b1 = Bank(12)
-    c1 = Customer(10)
-    a1.print_account()
-    b1.print_bank()
-    c1.print_customer()
-    a1.test(c1)
+def main():    
+    b1 = Bank('Nordea')
+    # The file location is set to be run with the script file
+    b1._load('src/bank_registers/bank.txt')
+
+    #a1 = Account()
+    #c1 = Customer()
 
 
 if __name__ == '__main__':
