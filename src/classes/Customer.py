@@ -1,6 +1,6 @@
 class Customer:
-    def __init__(self, x):
-        self.x = x
-
-    def print_customer(self):
-        print('hello, Customer')
+    def __init__(self, id, name, pnr, konton):
+        self.id = id
+        self.name = name
+        self.pnr = pnr
+        self.konton = konton
