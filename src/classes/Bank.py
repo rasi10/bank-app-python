@@ -120,11 +120,18 @@ class Bank:
                 return account.account_number
         return -1
        
-
-    '''
     def get_account(self, input_file, pnr, account_id):
-        pass
-
+        list_of_customers = self._load(input_file)
+        for index, customer in enumerate(list_of_customers):
+            if customer.pnr == pnr:                
+                accounts = customer.accounts                        
+                for acc in accounts:
+                    if acc.account_number == account_id:
+                        return repr(acc)                
+        return 'Account not found'
+    
+    
+    '''
     def deposit(pnr, account_id, amount):
         pass
 

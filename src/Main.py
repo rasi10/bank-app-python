@@ -33,9 +33,11 @@ def main():
     result = b1.remove_customer('src/bank_registers/bank.txt', '199911115')
     print(result)
     '''
-    #print(b1.change_customer_name('src/bank_registers/bank.txt', 'janedoe2', '199911117'))
+    # print(b1.change_customer_name('src/bank_registers/bank.txt', 'janedoe2', '199911117'))
     
-    print(b1.add_account('src/bank_registers/bank.txt', '199911117'))
+    # print(b1.add_account('src/bank_registers/bank.txt', '199911117'))
+    
+    print(b1.get_account('src/bank_registers/bank.txt', '199911116','c0fac42d-62d3'))
 
 if __name__ == '__main__':
     main()
