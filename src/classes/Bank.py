@@ -38,11 +38,22 @@ class Bank:
             customers.append(f'Name: {customer.name} - PNumber:{customer.pnr}')
         return customers    
 
-    '''
-    def add_customer(name, pnr):
-        # new_account_number = str(uuid.uuid1())
-        pass
+    
+    def add_customer(self, input_file, name, pnr):
+        list_of_customers = self._load(input_file)        
+        duplicate_checker = True       
+        while duplicate_checker == True:               
+            new_customer_id = str(uuid.uuid1())[0:8]            
+            for customer in list_of_customers:                
+                while customer.id == new_customer_id:                    
+                    new_customer_id = str(uuid.uuid1())[0:8]
+            duplicate_checker = False
+
+        new_customer = Customer(new_customer_id,name, pnr)
+        print(new_customer)
+        
     '''   
+    '''
     def get_customer(self, input_file, pnr):
         list_of_customers = self._load(input_file)
         for customer in list_of_customers:
@@ -77,6 +88,7 @@ class Bank:
     def remove_customer(pnr):
         pass
     
+
     def add_account(pnr):
         pass
     

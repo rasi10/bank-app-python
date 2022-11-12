@@ -11,9 +11,10 @@ def main():
     # customers = b1.get_customers('src/bank_registers/bank.txt')
     # print(customers)
 
-    customer = b1.get_customer('src/bank_registers/bank.txt', '199911111')
-    print(customer)
+    # customer = b1.get_customer('src/bank_registers/bank.txt', '199911114')
+    # print(repr(customer))
 
+    b1.add_customer('src/bank_registers/bank.txt', 'janedoe', '199911114')
 
 if __name__ == '__main__':
     main()
