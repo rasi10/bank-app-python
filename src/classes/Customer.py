@@ -1,6 +1,6 @@
 class Customer:
-    def __init__(self, id, name, pnr, konton):
+    def __init__(self, id, name, pnr, accounts=[]):
         self.id = id
         self.name = name
         self.pnr = pnr
-        self.konton = konton
+        self.accounts = accounts
