@@ -1,7 +1,4 @@
-c0fac428:Name00:199911114:c0fac429-62d3:debit account:0.0
-c0fac42a:Name11:199911115:c0fac42b-62d3:debit account:0.0
 c0fac42c:Name22:199911116:c0fac42d-62d3:debit account:0.0
 c0fac42e:Name33:199911117:c0fac42f-62d3:debit account:0.0
 c0fac430:Name44:199911118:c0fac431-62d3:debit account:0.0
 c0fac432:Name55:199911119:c0fac433-62d3:debit account:0.0
-3f08a876:Linnea:199911112:a704740d-4444:debit account:0.0#a704740d-6666:debit account:5000.0#v704740d-6666:debit account:5000.0

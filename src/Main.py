@@ -20,11 +20,20 @@ def main():
     b1.add_customer('src/bank_registers/bank.txt', 'Name22', '199911116')
     b1.add_customer('src/bank_registers/bank.txt', 'Name33', '199911117')
     b1.add_customer('src/bank_registers/bank.txt', 'Name44', '199911118')
-    b1.add_customer('src/bank_registers/bank.txt', 'Name55', '199911119')
-    '''
+
+    
     
     result = b1.get_customer('src/bank_registers/bank.txt', '199911112')
     print(result)
+    '''
+
+    #print(b1.add_customer('src/bank_registers/bank.txt', 'Name55', '199911123'))
+
+    '''
+    result = b1.remove_customer('src/bank_registers/bank.txt', '199911115')
+    print(result)
+    '''
+
 
 if __name__ == '__main__':
     main()
