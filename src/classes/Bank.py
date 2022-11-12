@@ -79,7 +79,7 @@ class Bank:
                         file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')                
                 return True
         return False
-               
+
     def remove_customer(self, input_file, pnr):            
         list_of_customers = self._load(input_file)        
         result_list = []
@@ -103,10 +103,25 @@ class Bank:
                 return result_list, saldo
         return False
     
-    '''
-    def add_account(pnr):
-        pass
     
+    def add_account(self,input_file, pnr):
+        list_of_customers = self._load(input_file)
+        for index, customer in enumerate(list_of_customers):
+            if customer.pnr == pnr:
+                account = Account(str(uuid.uuid1())[0:13], 0.0)
+                list_of_customers[index].accounts.append(account)                
+                with open(input_file, 'w') as file:
+                    for customer in list_of_customers:
+                        accounts = customer.accounts
+                        account_string = ''
+                        for acc in accounts:
+                            account_string += f'{acc.account_number}:{acc.account_type}:{str(acc.balance).strip()}#'
+                        file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')                
+                return account.account_number
+        return -1
+       
+
+    '''
     def get_account(self, input_file, pnr, account_id):
         pass
 
