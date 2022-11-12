@@ -131,10 +131,30 @@ class Bank:
         return 'Account not found'
     
     
+ 
+    def deposit(self, input_file, pnr, account_id, amount):
+        list_of_customers = self._load(input_file)
+        for index, customer in enumerate(list_of_customers):
+            if customer.pnr == pnr:              
+                accounts = customer.accounts                        
+                for i, acc in enumerate(accounts):
+                    if acc.account_number == account_id:
+                        # print(type(accounts[i].balance))
+                        value = float(accounts[i].balance) + amount
+                        accounts[i].balance = float(value)                        
+                        # Persist the value to the file
+                        # return True
+            with open(input_file, 'w') as file:
+                for customer in list_of_customers:
+                    accounts = customer.accounts
+                    account_string = ''
+                    for acc in accounts:
+                        account_string += f'{acc.account_number}:{acc.account_type}:{str(acc.balance).strip()}#'
+                    file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')    
+            return True        
+        return 'Account not found'
+   
     '''
-    def deposit(pnr, account_id, amount):
-        pass
-
     def withdraw(pnr, account_id, amount):
         pass
 
