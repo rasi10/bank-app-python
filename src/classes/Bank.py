@@ -53,7 +53,6 @@ class Bank:
                 return False        
         new_customer = Customer(new_customer_id,name, pnr)
         account = Account(str(uuid.uuid1())[0:13], 0.0)        
-        # print(new_customer)
         with open(input_file, 'a') as file:
             file.write(f'{new_customer.id}:{new_customer.name}:{new_customer.pnr}:{account.account_number}:{account.account_type}:{account.balance}\n')
         return True
@@ -65,38 +64,29 @@ class Bank:
                 return customer
         return 'User not found!'  
     
-    '''
+   
     def change_customer_name(self, input_file, name, pnr):
-        list_of_customers = self._load(input_file)
-        operation_result = False
-        index_of_customer = 0
-        for i, customer in enumerate(list_of_customers):
-            c = customer.split(':')
-            if pnr == c[2]:
-                operation_result = True
-                index_of_customer = i
-
-        if operation_result == True:
-            temp = list_of_customers[index_of_customer].split(':')
-            temp[1] = name
-            list_of_customers[index_of_customer] = str(temp)
-            print(list_of_customers)
-            with open(input_file, 'w') as fp:                       
-                fp.write(list_of_customers)
-            fp.close()
-            return True
-        else:
-            print(list_of_customers)
-            return False
-    '''
+        list_of_customers = self._load(input_file)        
+        for index, customer in enumerate(list_of_customers):
+            if customer.pnr == pnr:
+                list_of_customers[index].name = name
+                with open(input_file, 'w') as file:
+                    for customer in list_of_customers:
+                        accounts = customer.accounts
+                        account_string = ''
+                        for acc in accounts:
+                            account_string += f'{acc.account_number}:{acc.account_type}:{acc.balance.strip()}#'
+                        file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')                
+                return True
+        return False
+               
     def remove_customer(self, input_file, pnr):            
         list_of_customers = self._load(input_file)        
-        print('--------------------------------------')
         result_list = []
         saldo = 0 
         for customer in list_of_customers:
             if customer.pnr == pnr:
-                accounts = customer.accounts                            
+                accounts = customer.accounts
                 for acc in accounts:
                     result_list.append(str(acc)[1:-1])
                     saldo += float(acc.balance)

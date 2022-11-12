@@ -34,6 +34,9 @@ def main():
     print(result)
     '''
 
+    print(b1.change_customer_name('src/bank_registers/bank.txt', 'janedoe2', '199911117'))
+    
+
 
 if __name__ == '__main__':
     main()
