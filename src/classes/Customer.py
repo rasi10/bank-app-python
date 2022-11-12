@@ -8,5 +8,5 @@ class Customer:
     def __str__(self):
         accounts_as_string = ''
         for account in self.accounts:
-            accounts_as_string += f'{account.account_number}|{account.account_name}|{account.balance} # '
+            accounts_as_string += str(account)
         return f'Name: {self.name} - PNR: {self.pnr} - Accounts: {accounts_as_string}'

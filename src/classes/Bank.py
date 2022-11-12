@@ -19,7 +19,9 @@ class Bank:
                 customer_accounts.append(account)
                 customer = Customer(line.split(':')[0], line.split(':')[1], line.split(':')[2], customer_accounts)
                 all_customers.append(customer)
-            elif len(accounts) > 1:                
+            elif len(accounts) > 1:  
+                account = Account(line.split(':')[3],line.split(':')[4] )
+                customer_accounts.append(account)              
                 for i in range(1, len(accounts)):                    
                     account = Account(accounts[i].split(':')[0],accounts[i].split(':')[2] )
                     customer_accounts.append(account)
