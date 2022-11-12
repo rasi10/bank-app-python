@@ -7,4 +7,4 @@ class Account:
         self.account_type = account_type
 
     def __str__(self):        
-        return f'Number: {self.account_number}|Type: {self.account_type}|Balance: {self.balance} #'
+        return f'\n[Number: {self.account_number}|Type: {self.account_type}|Balance: {self.balance.strip()}]'

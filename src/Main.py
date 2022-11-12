@@ -14,7 +14,17 @@ def main():
     # customer = b1.get_customer('src/bank_registers/bank.txt', '199911114')
     # print(repr(customer))
 
-    b1.add_customer('src/bank_registers/bank.txt', 'janedoe', '199911114')
+    '''
+    b1.add_customer('src/bank_registers/bank.txt', 'Name00', '199911114')
+    b1.add_customer('src/bank_registers/bank.txt', 'Name11', '199911115')
+    b1.add_customer('src/bank_registers/bank.txt', 'Name22', '199911116')
+    b1.add_customer('src/bank_registers/bank.txt', 'Name33', '199911117')
+    b1.add_customer('src/bank_registers/bank.txt', 'Name44', '199911118')
+    b1.add_customer('src/bank_registers/bank.txt', 'Name55', '199911119')
+    '''
+    
+    result = b1.get_customer('src/bank_registers/bank.txt', '199911112')
+    print(result)
 
 if __name__ == '__main__':
     main()

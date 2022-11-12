@@ -1,4 +1,4 @@
-1111:Rafael:199911111:1001:debit account:5000.0#1002:debit account:5000.0#1003:debit account:5000.0
-1112:Linnea:199911112:1004:debit account:5000.0#1005:debit account:5000.0
-1113:Manuel:199911113:1006:debit account:5000.0
-1114:test:199911114:1007:debit account:5000.0
+3f08a345:Rafael:199911111:a704740d-3333:debit account:5000.0#a704740d-7777:debit account:5000.0#a704740d-8888:debit account:5000.0
+3f08a876:Linnea:199911112:a704740d-4444:debit account:5000.0#a704740d-6666:debit account:5000.0
+3f08a564:Manuel:199911113:a704740d-5555:debit account:5000.0
+a704740c:Name:199911114:a704740d-62d2:debit account:0.0

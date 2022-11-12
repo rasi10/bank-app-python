@@ -15,12 +15,12 @@ class Bank:
         for line in lines:            
             accounts = line.split('#')                         
             if (len(accounts) == 1):                
-                account = Account(line.split(':')[3],line.split(':')[4] )
+                account = Account(line.split(':')[3],line.split(':')[5] )
                 customer_accounts.append(account)
                 customer = Customer(line.split(':')[0], line.split(':')[1], line.split(':')[2], customer_accounts)
                 all_customers.append(customer)
-            elif len(accounts) > 1:  
-                account = Account(line.split(':')[3],line.split(':')[4] )
+            elif len(accounts) > 1:                               
+                account = Account(line.split(':')[3],line.split(':')[5].split('#')[0])
                 customer_accounts.append(account)              
                 for i in range(1, len(accounts)):                    
                     account = Account(accounts[i].split(':')[0],accounts[i].split(':')[2] )
@@ -48,9 +48,13 @@ class Bank:
                 while customer.id == new_customer_id:                    
                     new_customer_id = str(uuid.uuid1())[0:8]
             duplicate_checker = False
-
         new_customer = Customer(new_customer_id,name, pnr)
-        print(new_customer)
+
+        
+        account = Account(str(uuid.uuid1())[0:13], 0.0)        
+        # print(new_customer)
+        with open(input_file, 'a') as file:
+            file.write(f'{new_customer.id}:{new_customer.name}:{new_customer.pnr}:{account.account_number}:{account.account_type}:{account.balance}\n')
         
     '''   
     '''
