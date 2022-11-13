@@ -174,7 +174,35 @@ class Bank:
             return True
         return 'Account not found'
 
-    '''
-    def close_account(pnr, account_id):
-        pass
-    '''
+
+    def close_account(self, input_file, pnr, account_id):
+        list_of_customers = self._load(input_file)
+        validator = False
+        saldo = 0.0
+        for index, customer in enumerate(list_of_customers):            
+            if pnr == list_of_customers[index].pnr:                
+                accounts = customer.accounts                        
+                for acc in accounts:                     
+                    if acc.account_number == account_id:
+                        if len(accounts) > 1:     
+                            saldo = acc.balance                    
+                            list_of_customers[index].accounts.remove(acc)                            
+                            validator = True
+                        else:
+                            validator = False
+        
+        if validator == True:
+            with open(input_file, 'w') as file:
+                for customer in list_of_customers:
+                    accounts = customer.accounts
+                    account_string = ''
+                    for acc in accounts:
+                        account_string += f'{acc.account_number}:{acc.account_type}:{str(acc.balance).strip()}#'
+                    file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')    
+            return True, f'Saldo: {saldo}'
+        else:
+            return False              
+                        
+                        
+
+
