@@ -50,7 +50,7 @@ class Bank:
             duplicate_checker = False        
         for customer in list_of_customers:
             if customer.pnr == pnr:
-                return False        
+                return False      
         new_customer = Customer(new_customer_id,name, pnr)
         account = Account(str(uuid.uuid1())[0:13], 0.0)        
         with open(input_file, 'a') as file:
@@ -98,9 +98,8 @@ class Bank:
                         account_string = ''
                         for acc in accounts:
                             account_string += f'{acc.account_number}:{acc.account_type}:{acc.balance.strip()}#'
-                        file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')
-                
-                return result_list, saldo
+                        file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')                
+                return result_list, f'Saldo: {saldo}'
         return False
     
     
@@ -134,13 +133,24 @@ class Bank:
  
     def deposit(self, input_file, pnr, account_id, amount):
         list_of_customers = self._load(input_file)
-        for index, customer in enumerate(list_of_customers):
-            if customer.pnr == pnr:              
+        i = 0
+        j = 0
+        validator = False
+        for index, customer in enumerate(list_of_customers):            
+            if pnr == list_of_customers[index].pnr:                
                 accounts = customer.accounts                        
-                for i, acc in enumerate(accounts):
-                    if acc.account_number == account_id:                        
-                        value = float(accounts[i].balance) + amount
-                        accounts[i].balance = float(value)                        
+                for idx, acc in enumerate(accounts):                    
+                    if accounts[idx].account_number == account_id:
+                        i = index
+                        j = idx
+                        validator = True                        
+                        break
+                    else:                        
+                        validator = False
+
+        if validator == True:
+            value = float(list_of_customers[i].accounts[j].balance) + amount            
+            list_of_customers[i].accounts[j].balance = float(value) 
             with open(input_file, 'w') as file:
                 for customer in list_of_customers:
                     accounts = customer.accounts
@@ -149,21 +159,33 @@ class Bank:
                         account_string += f'{acc.account_number}:{acc.account_type}:{str(acc.balance).strip()}#'
                     file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')    
             return True
-        return 'Account not found'
-   
-  
+        else:            
+            return False
+
+
     def withdraw(self, input_file, pnr, account_id, amount):
         list_of_customers = self._load(input_file)
-        for index, customer in enumerate(list_of_customers):
-            if customer.pnr == pnr:              
+        i = 0
+        j = 0
+        validator = False
+        for index, customer in enumerate(list_of_customers):            
+            if pnr == list_of_customers[index].pnr:                
                 accounts = customer.accounts                        
-                for i, acc in enumerate(accounts):
-                    if acc.account_number == account_id:                        
-                        value = float(accounts[i].balance) - amount
-                        if value < 0:
-                            print('You do not have enough saldo to perform this operation')
-                            return False
-                        accounts[i].balance = float(value)                        
+                for idx, acc in enumerate(accounts):                    
+                    if accounts[idx].account_number == account_id:
+                        i = index
+                        j = idx
+                        validator = True                        
+                        break
+                    else:                        
+                        validator = False
+
+        if validator == True:
+            value = float(list_of_customers[i].accounts[j].balance) - amount
+            if value < 0:
+                print('You do not have enough balance to perform this operation')
+                return False
+            list_of_customers[i].accounts[j].balance = float(value) 
             with open(input_file, 'w') as file:
                 for customer in list_of_customers:
                     accounts = customer.accounts
@@ -172,8 +194,8 @@ class Bank:
                         account_string += f'{acc.account_number}:{acc.account_type}:{str(acc.balance).strip()}#'
                     file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')    
             return True
-        return 'Account not found'
-
+        else:            
+            return False
 
     def close_account(self, input_file, pnr, account_id):
         list_of_customers = self._load(input_file)
@@ -201,6 +223,7 @@ class Bank:
                     file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')    
             return True, f'Saldo: {saldo}'
         else:
+            print('As a user from the bank you need to have at least one account!')
             return False              
                         
                         
