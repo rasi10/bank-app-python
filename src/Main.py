@@ -39,6 +39,7 @@ def main():
     
     # print(b1.get_account('src/bank_registers/bank.txt', '199911116','c0fac42d-62d3'))
     # print(b1.deposit('src/bank_registers/bank.txt', '199911116','62fed90e-62e2', 20.0))
+    print(b1.withdraw('src/bank_registers/bank.txt', '199911116','62fed90e-62e2', 20.0))
 
 if __name__ == '__main__':
     main()

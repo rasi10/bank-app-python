@@ -138,12 +138,9 @@ class Bank:
             if customer.pnr == pnr:              
                 accounts = customer.accounts                        
                 for i, acc in enumerate(accounts):
-                    if acc.account_number == account_id:
-                        # print(type(accounts[i].balance))
+                    if acc.account_number == account_id:                        
                         value = float(accounts[i].balance) + amount
                         accounts[i].balance = float(value)                        
-                        # Persist the value to the file
-                        # return True
             with open(input_file, 'w') as file:
                 for customer in list_of_customers:
                     accounts = customer.accounts
@@ -151,13 +148,33 @@ class Bank:
                     for acc in accounts:
                         account_string += f'{acc.account_number}:{acc.account_type}:{str(acc.balance).strip()}#'
                     file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')    
-            return True        
+            return True
         return 'Account not found'
    
-    '''
-    def withdraw(pnr, account_id, amount):
-        pass
+  
+    def withdraw(self, input_file, pnr, account_id, amount):
+        list_of_customers = self._load(input_file)
+        for index, customer in enumerate(list_of_customers):
+            if customer.pnr == pnr:              
+                accounts = customer.accounts                        
+                for i, acc in enumerate(accounts):
+                    if acc.account_number == account_id:                        
+                        value = float(accounts[i].balance) - amount
+                        if value < 0:
+                            print('You do not have enough saldo to perform this operation')
+                            return False
+                        accounts[i].balance = float(value)                        
+            with open(input_file, 'w') as file:
+                for customer in list_of_customers:
+                    accounts = customer.accounts
+                    account_string = ''
+                    for acc in accounts:
+                        account_string += f'{acc.account_number}:{acc.account_type}:{str(acc.balance).strip()}#'
+                    file.write(f'{customer.id}:{customer.name}:{customer.pnr}:{account_string[:-1]}\n')    
+            return True
+        return 'Account not found'
 
+    '''
     def close_account(pnr, account_id):
         pass
     '''

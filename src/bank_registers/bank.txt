@@ -1,4 +1,4 @@
-c0fac42c:Name22:199911116:c0fac42d-62d3:debit account:280.0#62fed90e-62e2:debit account:360.0
+c0fac42c:Name22:199911116:c0fac42d-62d3:debit account:280.0#62fed90e-62e2:debit account:0.0
 c0fac42e:janedoe2:199911117:c0fac42f-62d3:debit account:0.0#680f33b2-62e2:debit account:0.0#6a92978c-62e2:debit account:0.0
 c0fac430:Name44:199911118:c0fac431-62d3:debit account:0.0
 c0fac432:Name55:199911119:c0fac433-62d3:debit account:0.0
